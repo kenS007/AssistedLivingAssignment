@@ -1,0 +1,40 @@
+Cornflakes, cornflakes, 1
+Cornflakes, milk, 1
+Cornflakes, sugar, 1
+Orange juice, orange juice, 1
+Spaghetti bolognaise, mince, 1
+Spaghetti bolognaise, carrot, 1
+Spaghetti bolognaise, cheese, 1
+Spaghetti bolognaise, pasta, 2
+Spaghetti bolognaise, onion, 1
+Spaghetti bolognaise, carrot, 1
+Spaghetti bolognaise, garlic, 1
+Spaghetti bolognaise, frozen pea, 1
+blackcurrent juice, orange juice, 1
+toast, bread, 0.01
+toast, margarine, 0.01
+toast, jam, 0.01
+porridge, oats, 0.05
+porridge, salt, 0.001
+porridge, milk, 0.1
+cornflakes, milk, 0.1
+cornflakes, cornflakes, 0.1
+muesli, meusli, 0.1
+cheese sandwich, bread, 0.02
+cheese sandwich, margarine, 0.02
+cheese sandwich, cheese, 0.05
+cheese sandwich, lettuce, 0.05
+beans on toast, beans, 1
+beans on toast, bread, 0.01
+ham sandwich, bread, 0.02
+ham sandwich, margarine, 0.02
+ham sandwich, ham, 0.2
+ham sandwich, lettuce, 0.05
+noodles, noodles, 1
+apple, apple, 1
+banana, banana, 1
+orange, orange, 1
+pear, pear, 1
+yoghurt, 1
+
+Bored: Will add more later

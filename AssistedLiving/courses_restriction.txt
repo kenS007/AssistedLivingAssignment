@@ -1,0 +1,25 @@
+Soup, lunch, 2
+Soup, dinner, 1
+Spaghetti bolognaise, dinner, 2
+orange juice, breakfast, 1
+blackcurrent juice, breakfast, 1
+toast, breakfast, 2
+porridge, breakfast, 2
+cornflakes, breakfast, 2
+muesli, breakfast, 2
+cheese sandwich, lunch, 1
+beans on toast, lunch, 1
+ham sandwich, lunch, 1
+noodles, lunch, 1
+apple, lunch, 2
+apple, dinner, 2
+banana, lunch, 2
+banana, dinner, 2
+orange, lunch, 2
+orange, dinner, 2
+pear, lunch, 2
+pear, dinner, 2
+yoghurt, lunch, 2
+yoghurt, dinner, 2
+
+Bored: Will add more later

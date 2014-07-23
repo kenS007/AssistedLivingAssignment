@@ -1,0 +1,25 @@
+Cornflakes, 0.50
+Mince, 2
+Orange juice, 0.4
+Frozen pea, 0.2
+carrot, 0.1
+cheese, 0.6
+pasta, 0.3
+onion, 0.1
+bread, 3
+margarine, 3
+jam, 2.50
+cornflakes, 5
+oats, 2
+salt, 3
+cheese, 10
+lettuce, 3
+beans, 0.9
+ham, 5 
+noodles, 1
+apple, 0.5
+banana, 0.6
+pear, 0.6
+yoghurt, 0.9
+
+Bored: Will add more later
