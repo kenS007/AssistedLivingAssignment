@@ -45,8 +45,9 @@ public class LoadFile {
 	}
 	
 	
-	public ArrayList loadCourse(String path){
-		ArrayList<Course> courseList=new ArrayList<Course>();
+	
+	public ArrayList<String> loadCourseString(String path){
+		ArrayList<String> courseList=new ArrayList<String>();
 		File file=new File(path);
 		
 		try{
@@ -54,34 +55,11 @@ public class LoadFile {
 			
 			while (in.hasNext()){
 				String line=in.nextLine();
-				String[] corInCost=line.split(",");
+				
+				courseList.add(line);
 				
 				
-				if(corInCost.length==3){
-					//System.out.println(corInCost[0]+", "+corInCost[1]+", "+corInCost[2]);
-					
-					if(courseList.contains(corInCost[0])){
-							
-						System.out.println("It already exist");
-						
-					}else{
-						
-						Course course=new Course();
-						course.setName(corInCost[0]);
-						System.out.println("it works?"+course.getname());
-						
-					}
-					
-					
-				/*	if(courseList.get(courseList.indexOf(corInCost[0])) == null){
-						Course course=new Course();
-						course.setName(corInCost[0]);
-						System.out.println("This is working?"+course.getname());
-					}*/
-					
-			
-					
-				}
+
 			}
 			
 			
@@ -93,18 +71,33 @@ public class LoadFile {
 		return courseList;
 	}
 	
-	/*public static ArrayList<Course> loadCourseRestriction(String path){
+	public ArrayList<String> loadCourseRestrictionString(String path){
+		ArrayList<String> cRList=new ArrayList<String>();
+		File file=new File(path);
+		try{
+			Scanner in=new Scanner(file);
+			
+			while(in.hasNext()){
+				String line=in.nextLine();
+				
+				cRList.add(line);
+			}
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 		
 		
 		
-	}*/
+		return cRList;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		LoadFile load =new LoadFile();
 		//load.loadtxt("ingredients.txt");
-		load.loadCourse("courses.txt");
+		load.loadCourseString("courses.txt");
 	}
 
 }

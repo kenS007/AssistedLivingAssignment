@@ -8,6 +8,10 @@ public class Ingredient {
 	 * cost of ingredient
 	 */
 	double cost;
+	/**
+	 * number of units
+	 */
+	double numOfUnits;
 	
 	
 	public Ingredient(){

@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 public class Gui extends JFrame {
 	
 	JTextArea textArea;
+	JTextArea textAreaCourse;
+	JTextArea textAreaCourseRestriction;
 	
 	public Gui(){
 		
@@ -25,32 +27,32 @@ public class Gui extends JFrame {
 		panel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(44, 64, 198, 259);
+		scrollPane.setBounds(27, 65, 211, 259);
 		panel.add(scrollPane);
 		
 		 textArea = new JTextArea();
 		scrollPane.setViewportView(textArea);
 		
 		JLabel lblIngredientNameCost = new JLabel("Ingredient name, Cost per unit");
-		lblIngredientNameCost.setBounds(44, 40, 178, 14);
+		lblIngredientNameCost.setBounds(27, 40, 178, 14);
 		panel.add(lblIngredientNameCost);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(265, 64, 198, 259);
+		scrollPane_1.setBounds(248, 64, 211, 259);
 		panel.add(scrollPane_1);
 		
-		JTextArea textAreaCourse = new JTextArea();
+		 textAreaCourse = new JTextArea();
 		scrollPane_1.setViewportView(textAreaCourse);
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(489, 64, 198, 259);
+		scrollPane_2.setBounds(469, 65, 211, 259);
 		panel.add(scrollPane_2);
 		
-		JTextArea textAreaCourseRestriction = new JTextArea();
+		 textAreaCourseRestriction = new JTextArea();
 		scrollPane_2.setViewportView(textAreaCourseRestriction);
 		
 		JLabel lblNewLabel = new JLabel("Course name, Ingredient, number of units");
-		lblNewLabel.setBounds(255, 40, 211, 14);
+		lblNewLabel.setBounds(248, 40, 224, 14);
 		panel.add(lblNewLabel);
 		
 		JLabel lblCourseMealOrder = new JLabel("Course, Meal, Order");
@@ -59,8 +61,8 @@ public class Gui extends JFrame {
 		
 		populateTextArea();
 		
-		System.out.println("test");
-		
+		populateCourseTextA();	
+		populateCourseRestrictionTextA();
 		
 		
 		
@@ -80,6 +82,26 @@ public class Gui extends JFrame {
 		}
 		
 	}
+	public void populateCourseTextA(){
+		LoadFile load=new LoadFile();
+		ArrayList<String> courseList=new ArrayList<String>();
+		
+		courseList=load.loadCourseString("courses.txt");
+		for(String s:courseList){
+			textAreaCourse.append(s+"\n");
+		}
+		
+	}
+	public void populateCourseRestrictionTextA(){
+		LoadFile load=new LoadFile();
+		ArrayList<String> cRList=new ArrayList<String>();
+		
+		cRList=load.loadCourseRestrictionString("courses_restriction.txt");
+		for(String s:cRList){
+			textAreaCourseRestriction.append(s+"\n");
+		}
+	}
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
