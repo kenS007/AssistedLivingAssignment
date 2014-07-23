@@ -1,6 +1,12 @@
 
 public class Ingredient {
+	/**
+	 * name of ingredient
+	 */
 	String name;
+	/**
+	 * cost of ingredient
+	 */
 	double cost;
 	
 	
