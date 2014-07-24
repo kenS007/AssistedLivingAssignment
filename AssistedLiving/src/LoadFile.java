@@ -44,6 +44,37 @@ public class LoadFile {
 		
 	}
 	
+	public ArrayList<Course> loadCourse(String path){
+		ArrayList<Course> courseList=new ArrayList<Course>();
+		File file =new File(path);
+		
+		try{
+			Scanner in=new Scanner(file);
+			
+			while(in.hasNext()){
+				String line=in.next();
+				
+				//check if the course already exist
+				
+				//if it doesnt exist creat a new one
+				
+				//if it does find the index 
+					//check if the ingredient exists
+					//if it doesnt add it to the ingredient list
+					//if it does //increment the num of units???? idk
+				
+				
+			}
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		return courseList;
+	}
+	
+	
+	
 	
 	
 	public ArrayList<String> loadCourseString(String path){
