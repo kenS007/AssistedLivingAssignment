@@ -6,10 +6,10 @@ public class Course {
 	
 	ArrayList<Ingredient> ingredientList;
 	
-	String name;
+	private String name;
 	
 	
-	Double cost;
+	private Double cost;
 	
 	
 	public void setName(String name){
@@ -17,7 +17,7 @@ public class Course {
 		
 		
 	}
-	public String getname(){
+	public String getName(){
 		return name;
 	}
 	

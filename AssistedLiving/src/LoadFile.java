@@ -52,16 +52,25 @@ public class LoadFile {
 			Scanner in=new Scanner(file);
 			
 			while(in.hasNext()){
-				String line=in.next();
+				String line=in.nextLine();
+				String[] c =line.split(",");
+				c[0]=c[0].toLowerCase();
 				
-				//check if the course already exist
+				Boolean courseExists=false;
+				for(Course course:courseList){
+					if(course.getName()==c[0]){
+						System.out.println(c[0]+" it exists");
+						courseExists=true;
+						break;
+					}
+				}
+				if(!courseExists){
+					System.out.println(c[0]+" it doesnt exist");
+					Course cor=new Course();
+					cor.setName(c[0]);
+					courseList.add(cor);
+				}
 				
-				//if it doesnt exist creat a new one
-				
-				//if it does find the index 
-					//check if the ingredient exists
-					//if it doesnt add it to the ingredient list
-					//if it does //increment the num of units???? idk
 				
 				
 			}
@@ -72,6 +81,32 @@ public class LoadFile {
 		
 		return courseList;
 	}
+	public ArrayList<Meal> loadMeal(String path){
+		ArrayList<Meal> mealList=new ArrayList<Meal>();
+		File file =new File(path);
+		
+		try{
+			Scanner in =new Scanner(file);
+			while(in.hasNext()){
+				String line=in.nextLine();
+				String[] m =line.split(",");
+				
+				//add code
+				
+			}
+			
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+		
+		return mealList;
+	}
+
+	
+	
+	
 	
 	
 	
@@ -128,7 +163,11 @@ public class LoadFile {
 		
 		LoadFile load =new LoadFile();
 		//load.loadtxt("ingredients.txt");
-		load.loadCourseString("courses.txt");
+		//load.loadCourseString("courses.txt");
+		
+		load.loadCourse("courses.txt");
+		
+		
 	}
 
 }
