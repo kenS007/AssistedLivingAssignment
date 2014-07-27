@@ -21,5 +21,6 @@ apple, 0.5
 banana, 0.6
 pear, 0.6
 yoghurt, 0.9
+sugar, 1
 
 Bored: Will add more later

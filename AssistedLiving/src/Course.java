@@ -32,14 +32,41 @@ public class Course {
 		
 		return total;
 	}
+	public Boolean ingredientExists(String ingredient){
+		for(Ingredient ing :ingredientList){
+			if(ing.getName().equals(ingredient)){//the ingredient is alredy in the list
+					return true;
+				}
+			
+		}
+		
+		return false;
+			
+	}
+	public int getCourseIngredientIndex(String ingName){
+		for(int i=0;i<ingredientList.size();i++){
+			if(ingredientList.get(i).name.equals(ingName)){
+				return i;
+			}
+		}
+		
+		
+		
+		return -1;
+	}
 	
 	
 	public void addIngredient(Ingredient in){
 		this.ingredientList.add(in);
 	}
+	public void addIngredient(Ingredient ing,double numUnit){
+		Ingredient in=ing;
+		in.addNumUnitBy(numUnit);
+		this.ingredientList.add(in);
+	}
 	
 	public String toString(){
-		return name;
+		return name+" "+ingredientList;
 	}
 	
 	
