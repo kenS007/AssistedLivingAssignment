@@ -41,6 +41,9 @@ public class Ingredient {
 		return name+", "+cost;
 	}
 	
+	public void addNumUnitBy(double num){
+		numOfUnits=numOfUnits+num;
+	}
 	
 	
 

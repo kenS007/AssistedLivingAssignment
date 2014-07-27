@@ -38,6 +38,9 @@ public class Course {
 		this.ingredientList.add(in);
 	}
 	
+	public String toString(){
+		return name;
+	}
 	
 	
 	

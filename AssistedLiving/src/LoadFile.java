@@ -1,11 +1,14 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 
 public class LoadFile {
-	
-	
+	ArrayList<Course> courseList=new ArrayList<Course>();
+	ArrayList<Ingredient> ingredientList=new ArrayList<Ingredient>();
+	Hashtable<Course,ArrayList<Ingredient>> courseTable=new Hashtable<Course,ArrayList<Ingredient>>();
 	
 	
 	/**
@@ -16,7 +19,7 @@ public class LoadFile {
 	 * 
 	 */
 	public ArrayList<Ingredient> loadIngredient(String path){
-		ArrayList<Ingredient> ingredientList=new ArrayList<Ingredient>();
+		//ArrayList<Ingredient> ingredientList=new ArrayList<Ingredient>();
 		File file=new File(path);
 		try{
 			Scanner in=new Scanner(file);
@@ -44,8 +47,28 @@ public class LoadFile {
 		
 	}
 	
+	
+	public void addInToCourse(){
+		
+	}
+	public int getIngredientIndex(String ingName){
+		for(Ingredient ing:ingredientList){
+			if(ing.getName().equals(ingName)){
+				
+			}
+		}
+		for(int i=0;i<ingredientList.size();i++){
+			if(ingredientList.get(i).getName().equals(ingName)){
+				return i;
+			}
+		}
+		
+		
+		return -1;  //return -1 if the ingredient doesnt exist
+	}
+	
 	public ArrayList<Course> loadCourse(String path){
-		ArrayList<Course> courseList=new ArrayList<Course>();
+		//ArrayList<Course> courseList=new ArrayList<Course>();
 		File file =new File(path);
 		
 		try{
@@ -57,11 +80,25 @@ public class LoadFile {
 				c[0]=c[0].toLowerCase();
 				
 				Boolean courseExists=false;
-				for(Course course:courseList){
-					if(course.getName()==c[0]){
-						System.out.println(c[0]+" it exists");
-						courseExists=true;
-						break;
+
+				if (!courseList.isEmpty()) {
+					for (Course course : courseList) {
+						System.out.println("!");
+						if (course.getName().equals(c[0])) {
+							int indx=getIngredientIndex(c[1]);
+							if(indx!=-1){
+								//check if the ingredient is already in the course
+								//if it already exist increment unit or 
+								//if it doesnt add it to the course ingredient list
+								// and add unit
+								
+							}else{
+								System.out.println("Error: ingredient "+c[1]+" doesnt exist");
+							}
+									
+							
+							break;
+						}
 					}
 				}
 				if(!courseExists){
@@ -69,11 +106,23 @@ public class LoadFile {
 					Course cor=new Course();
 					cor.setName(c[0]);
 					courseList.add(cor);
+					
+					//add ingredient
+					int indx=getIngredientIndex(c[1]);
+					if(indx!=-1){//if ingredient is in the list
+						cor.addIngredient(ingredientList.get(indx));
+						
+					}else{
+						System.out.println("error:ingredient: "+c[1]+" doesnt exist");
+					}
+					
 				}
+				System.out.println(courseList);
 				
 				
 				
 			}
+			in.close();
 			
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -113,7 +162,7 @@ public class LoadFile {
 	
 	
 	public ArrayList<String> loadCourseString(String path){
-		ArrayList<String> courseList=new ArrayList<String>();
+		ArrayList<String> courseListS=new ArrayList<String>();
 		File file=new File(path);
 		
 		try{
@@ -122,7 +171,7 @@ public class LoadFile {
 			while (in.hasNext()){
 				String line=in.nextLine();
 				
-				courseList.add(line);
+				courseListS.add(line);
 				
 				
 
@@ -134,7 +183,7 @@ public class LoadFile {
 			ex.printStackTrace();
 		}
 			
-		return courseList;
+		return courseListS;
 	}
 	
 	public ArrayList<String> loadCourseRestrictionString(String path){
