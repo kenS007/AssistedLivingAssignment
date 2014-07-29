@@ -44,6 +44,10 @@ public class Ingredient {
 	public void addNumUnitBy(double num){
 		numOfUnits=numOfUnits+num;
 	}
+	public double getUnits(){
+		return numOfUnits;
+	}
+
 	
 	
 	

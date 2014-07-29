@@ -11,15 +11,25 @@ import javax.swing.JLabel;
 
 public class Gui extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JTextArea textArea;
 	JTextArea textAreaCourse;
 	JTextArea textAreaCourseRestriction;
+	JTextArea textAreaMissingIn;
+	LoadFile load=new LoadFile();
+	ArrayList<Ingredient> ingredientList =new ArrayList<Ingredient>();
+	ArrayList<Course> courseList=new ArrayList<Course>();
+	ArrayList<String> cRList=new ArrayList<String>();
+	ArrayList<String> missingIngredientList=new ArrayList<String>();
 	
 	public Gui(){
 		
 		setResizable(false);
 		setTitle("Assisted Living");
-		setSize(750, 460);
+		setSize(750, 533);
 		setLocationRelativeTo(null);
 		
 		JPanel panel = new JPanel();
@@ -59,10 +69,28 @@ public class Gui extends JFrame {
 		lblCourseMealOrder.setBounds(489, 40, 114, 14);
 		panel.add(lblCourseMealOrder);
 		
+		JLabel lblMissingIngredients = new JLabel("Missing Ingredients");
+		lblMissingIngredients.setBounds(27, 336, 146, 14);
+		panel.add(lblMissingIngredients);
+		
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(27, 361, 421, 144);
+		panel.add(scrollPane_3);
+		
+		 textAreaMissingIn = new JTextArea();
+		scrollPane_3.setViewportView(textAreaMissingIn);
+		
+		
+		ingredientList=load.loadIngredient("ingredients.txt");
+		courseList=load.loadCourse("courses.txt");
+		missingIngredientList=load.getMissingIngredients();
+		
+		
 		populateTextArea();
 		
 		populateCourseTextA();	
-		populateCourseRestrictionTextA();
+		populateMissingTextA();
+		//populateCourseRestrictionTextA();
 		
 		
 		
@@ -73,32 +101,43 @@ public class Gui extends JFrame {
 	
 	
 	public void populateTextArea(){
-		LoadFile load=new LoadFile();
-		ArrayList<Ingredient> ingredientList =new ArrayList<Ingredient>();
 		
-		ingredientList=load.loadIngredient("ingredients.txt");
+		
+		
+		
 		for(Ingredient in: ingredientList){
 			textArea.append(in.toString()+"\n");
 		}
 		
 	}
 	public void populateCourseTextA(){
-		LoadFile load=new LoadFile();
-		ArrayList<String> courseList=new ArrayList<String>();
 		
-		courseList=load.loadCourseString("courses.txt");
-		for(String s:courseList){
-			textAreaCourse.append(s+"\n");
+		for(Course course:courseList){
+			ArrayList<Ingredient> corInList=course.getIngredientlist();
+			for(Ingredient ingredient:corInList){
+				textAreaCourse.append(course.getName()+", "+ingredient.getName()+", "+ingredient.getUnits()+"\n");
+			}
+			
 		}
+		
+		
+		/*for(String s:courseList){
+			textAreaCourse.append(s+"\n");
+		}*/
 		
 	}
 	public void populateCourseRestrictionTextA(){
-		LoadFile load=new LoadFile();
-		ArrayList<String> cRList=new ArrayList<String>();
+		
+		
 		
 		cRList=load.loadCourseRestrictionString("courses_restriction.txt");
 		for(String s:cRList){
 			textAreaCourseRestriction.append(s+"\n");
+		}
+	}
+	public void populateMissingTextA(){
+		for(String s:missingIngredientList){
+			textAreaMissingIn.append(s+"\n");
 		}
 	}
 	

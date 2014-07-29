@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Course {
 	
 	
-	ArrayList<Ingredient> ingredientList;
+	ArrayList<Ingredient> ingredientList=new ArrayList<Ingredient>();
 	
 	private String name;
 	
@@ -67,6 +67,10 @@ public class Course {
 	
 	public String toString(){
 		return name+" "+ingredientList;
+	}
+	
+	public ArrayList<Ingredient> getIngredientlist(){
+		return ingredientList;
 	}
 	
 	
