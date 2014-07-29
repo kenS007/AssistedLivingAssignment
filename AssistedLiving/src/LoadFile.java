@@ -54,7 +54,7 @@ public class LoadFile {
 	public int getIngredientIndex(String ingName) {
 	
 		for (int i = 0; i < ingredientList.size(); i++) {
-			System.out.println("trololololo "+ingredientList.get(i).getName());
+			//System.out.println("trololololo "+ingredientList.get(i).getName());
 			//if (ingredientList.get(i).getName().equals(ingName)) {
 			if (ingredientList.get(i).getName().equals(ingName)) {
 				System.out.println("gII"+ingredientList.get(i).getName());
@@ -85,7 +85,7 @@ public class LoadFile {
 
 					if (!courseList.isEmpty()) {
 						for (Course course : courseList) {
-							System.out.println("!");
+							
 							if (course.getName().equals(c[0])) {
 								System.out.println("yes !!!"+c[0]+" exists");
 								courseExists=true;
@@ -107,7 +107,7 @@ public class LoadFile {
 								} else {
 									System.out.println("Error: ingredient "
 											+ c[1] + " doesnt exist");
-									missingIngredientList.add(line);
+									missingIngredientList.add(line.toLowerCase());
 								}
 
 								break;
@@ -135,7 +135,7 @@ public class LoadFile {
 						}
 						if(!inExists){
 							System.out.println("doesnt exist"+c[1]);
-							missingIngredientList.add(line);
+							missingIngredientList.add(line.toLowerCase());
 						}
 						courseList.add(cor);
 						/* // add ingredient
