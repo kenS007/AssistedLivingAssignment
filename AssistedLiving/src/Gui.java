@@ -4,9 +4,15 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JList;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class Gui extends JFrame {
@@ -24,17 +30,80 @@ public class Gui extends JFrame {
 	ArrayList<Course> courseList=new ArrayList<Course>();
 	ArrayList<String> cRList=new ArrayList<String>();
 	ArrayList<String> missingIngredientList=new ArrayList<String>();
+	ArrayList<Meal> mealList =new ArrayList<Meal>();
+	ArrayList<Meal> breakfastList=new ArrayList<Meal>();
+	ArrayList<Meal> lunchList =new ArrayList<Meal>();
+	ArrayList<Meal> dinnerList=new ArrayList<Meal>();
+	
+	JButton btnNewButton;
+	
+	DefaultListModel dlmBreakfast=new DefaultListModel();
+	DefaultListModel dlmLunch=new DefaultListModel();
+	DefaultListModel dlmDinner=new DefaultListModel();
+	private JList listBreakfast;
+	private JList listDinner;
 	
 	public Gui(){
 		
 		setResizable(false);
 		setTitle("Assisted Living");
-		setSize(750, 533);
+		setSize(750, 568);
 		setLocationRelativeTo(null);
-		
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		JTabbedPane jTab=new JTabbedPane();
+		getContentPane().add(jTab, BorderLayout.CENTER);
 		JPanel panel = new JPanel();
-		getContentPane().add(panel, BorderLayout.CENTER);
+		//getContentPane().add(panel, BorderLayout.CENTER);
+		jTab.add(panel,"tab1");
 		panel.setLayout(null);
+		
+		JPanel panel2=new JPanel();
+		panel.setLayout(null);
+		jTab.add(panel2,"tab2");
+		panel2.setLayout(null);
+		
+		 btnNewButton = new JButton("Go");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				populateMeals();
+				btnNewButton.setEnabled(false);
+			}
+		});
+		btnNewButton.setBounds(46, 420, 117, 29);
+		panel2.add(btnNewButton);
+		
+		JScrollPane scrollPane_4 = new JScrollPane();
+		scrollPane_4.setBounds(52, 47, 192, 306);
+		panel2.add(scrollPane_4);
+		
+		listBreakfast = new JList(dlmBreakfast);
+		scrollPane_4.setViewportView(listBreakfast);
+		
+		JLabel lblBreakfast = new JLabel("Breakfast");
+		lblBreakfast.setBounds(52, 19, 67, 16);
+		panel2.add(lblBreakfast);
+		
+		JLabel lblLunch = new JLabel("Lunch");
+		lblLunch.setBounds(290, 19, 61, 16);
+		panel2.add(lblLunch);
+		
+		JLabel lblDinner = new JLabel("Dinner");
+		lblDinner.setBounds(505, 19, 61, 16);
+		panel2.add(lblDinner);
+		
+		JScrollPane scrollPane_5 = new JScrollPane();
+		scrollPane_5.setBounds(282, 47, 192, 306);
+		panel2.add(scrollPane_5);
+		
+		JList listLunch = new JList(dlmLunch);
+		scrollPane_5.setViewportView(listLunch);
+		
+		JScrollPane scrollPane_6 = new JScrollPane();
+		scrollPane_6.setBounds(505, 47, 192, 306);
+		panel2.add(scrollPane_6);
+		
+		listDinner = new JList(dlmDinner);
+		scrollPane_6.setViewportView(listDinner);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(27, 65, 211, 259);
@@ -66,7 +135,7 @@ public class Gui extends JFrame {
 		panel.add(lblNewLabel);
 		
 		JLabel lblCourseMealOrder = new JLabel("Course, Meal, Order");
-		lblCourseMealOrder.setBounds(489, 40, 114, 14);
+		lblCourseMealOrder.setBounds(489, 40, 178, 14);
 		panel.add(lblCourseMealOrder);
 		
 		JLabel lblMissingIngredients = new JLabel("Missing Ingredients");
@@ -84,13 +153,14 @@ public class Gui extends JFrame {
 		ingredientList=load.loadIngredient("ingredients.txt");
 		courseList=load.loadCourse("courses.txt");
 		missingIngredientList=load.getMissingIngredients();
+		mealList=load.loadMeal("courses_restriction.txt");
 		
 		
 		populateTextArea();
 		
 		populateCourseTextA();	
 		populateMissingTextA();
-		//populateCourseRestrictionTextA();
+		populateCourseRestrictionTextA();
 		
 		
 		
@@ -141,6 +211,39 @@ public class Gui extends JFrame {
 		}
 	}
 	
+	
+	public void populateMeals(){
+		
+		for(Meal meal:mealList){
+			if(meal.getMealType().equals("breakfast")){
+				breakfastList.add(meal);
+				
+			}
+			if(meal.getMealType().equals("lunch")){
+				lunchList.add(meal);
+				
+			}if(meal.getMealType().equals("dinner")){
+				dinnerList.add(meal);
+			}
+		}
+		
+		for(int i=0;i<2;i++){
+			dlmBreakfast.addElement(breakfastList.get(i).course.getName());
+			breakfastList.remove(i);
+			
+			
+		}
+		for(int i=0;i<3;i++){
+			dlmLunch.addElement(lunchList.get(i).course.getName());
+			lunchList.remove(i);
+			
+			dlmDinner.addElement(dinnerList.get(i).course.getName());
+			dinnerList.remove(i);
+		}
+		
+		
+		
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -1,13 +1,15 @@
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 public class LoadFile {
 	public  ArrayList<Course> courseList = new ArrayList<Course>();
 	public ArrayList<Ingredient> ingredientList = new ArrayList<Ingredient>();
 	public ArrayList<String> missingIngredientList =new ArrayList<String>();
-	//Hashtable<Course, ArrayList<Ingredient>> courseTable = new Hashtable<Course, ArrayList<Ingredient>>();
+	public ArrayList<Meal> mealList=new ArrayList<Meal>();
+
 
 	/**
 	 * scans textfile and returns and ArrayList of Ingredients
@@ -73,28 +75,32 @@ public class LoadFile {
 			Scanner in = new Scanner(file);
 
 			while (in.hasNext()) {
-				String line = in.nextLine();
-				String[] c = line.split(",");
-				Boolean courseExists = false;
-				if (c.length == 3) {
+				String line = in.nextLine();  //get line from the txt file
+				String[] c = line.split(",");  //put the contents into an array
+				
+				Boolean courseExists = false; 
+				
+				if (c.length == 3) { 
 
-					c[0] = c[0].toLowerCase().trim();
-					c[1]=c[1].toLowerCase().trim();
-					double unit = Double.parseDouble(c[2]);
+					c[0] = c[0].toLowerCase().trim(); //set course to lowercase and trim whitespace
+					c[1]=c[1].toLowerCase().trim();  //set ingredient to lowercase and trim whitespace
+					double unit = Double.parseDouble(c[2]); // get the unit and convert it
 					
 
-					if (!courseList.isEmpty()) {
-						for (Course course : courseList) {
+					if (!courseList.isEmpty()) { //check if the arraylist is empty
+						
+						for (Course course : courseList) { //loop each course ing the course arraylist
 							
-							if (course.getName().equals(c[0])) {
+							if (course.getName().equals(c[0])) {     //if the course name in the array list is equals to the course in the file
 								System.out.println("yes !!!"+c[0]+" exists");
-								courseExists=true;
-								int indx = getIngredientIndex(c[1]);
-								if (indx != -1) {
-									// check if the ingredient is already in the
-									// course
+								
+								courseExists=true;  //set course exist to true
+								
+								int indx = getIngredientIndex(c[1]); //get the index in the arraylist
+								if (indx != -1) { //if the ingreient exist ing the course
+									
 									int ingIndx = course
-											.getCourseIngredientIndex(c[1]);
+											.getCourseIngredientIndex(c[1]);  //get index of the ingredient in the course
 									if (ingIndx != -1) {// it already exist it
 														// course ingredients
 
@@ -104,13 +110,13 @@ public class LoadFile {
 									}
 								
 
-								} else {
+								} else {  //ingredient doesnt exist
 									System.out.println("Error: ingredient "
 											+ c[1] + " doesnt exist");
-									missingIngredientList.add(line.toLowerCase());
+									missingIngredientList.add(line.toLowerCase()); //add to missing ingredient
 								}
 
-								break;
+								break;  //break loop 
 							}
 						}
 					}
@@ -174,6 +180,8 @@ public class LoadFile {
 
 		return courseList;
 	}
+	
+	
 
 	public ArrayList<Meal> loadMeal(String path) {
 		ArrayList<Meal> mealList = new ArrayList<Meal>();
@@ -184,8 +192,39 @@ public class LoadFile {
 			while (in.hasNext()) {
 				String line = in.nextLine();
 				String[] m = line.split(",");
-
-				// add code
+				Boolean courseExists=false;
+				
+				if(m.length==3){
+					m[0]=m[0].toLowerCase().trim();
+					m[1]=m[1].toLowerCase().trim();
+					int order=Integer.parseInt(m[2].trim());
+					
+					//check if course exists
+					for(Course course:courseList){
+						if(course.getName().equals(m[0])){
+							System.out.println("!");
+							courseExists=true;
+							//if(doesMealExists(m[1],course)){
+							//	System.out.println(m[1]+" is "+m[0]);
+							//}
+							Meal meal=new Meal();
+							meal.setMealType(m[1]);
+							meal.addCourse(course);
+							meal.setOrder(order);
+							
+							mealList.add(meal);
+	
+							break;
+						}
+					}
+					if(!courseExists){
+						System.out.println("the course: "+m[0]+" doesnt exist");
+					}
+					
+					
+				}
+				
+				
 
 			}
 
@@ -253,6 +292,7 @@ public class LoadFile {
 		// load.loadCourseString("courses.txt");
 		load.loadIngredient("ingredients.txt");
 		load.loadCourse("courses.txt");
+		load.loadMeal("courses_restriction.txt");
 		
 		
 

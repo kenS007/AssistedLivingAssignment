@@ -11,6 +11,8 @@ public class Course {
 	
 	private Double cost;
 	
+	private String[] MealType;
+	
 	
 	public void setName(String name){
 		this.name=name;

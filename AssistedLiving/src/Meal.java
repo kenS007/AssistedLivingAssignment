@@ -1,11 +1,13 @@
-import java.util.ArrayList;
+
 
 
 public class Meal {
 	
 	String mealType;
 
-	ArrayList<Course> courseList=new ArrayList<Course>();
+	Course course;
+	
+	int order;
 	
 	
 	
@@ -16,11 +18,11 @@ public class Meal {
 		return mealType;
 	}
 	
-	public void addCourse(ArrayList<Course> courseList){
-		//add stuff
-	}
 	public void addCourse(Course course){
-		courseList.add(course);
+		this.course=course;
+	}
+	public void setOrder(int order){
+		this.order=order;
 	}
 	
 	
