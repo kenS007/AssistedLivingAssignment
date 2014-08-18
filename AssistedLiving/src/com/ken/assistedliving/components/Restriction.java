@@ -1,3 +1,4 @@
+package com.ken.assistedliving.components;
 
 public class Restriction {
 

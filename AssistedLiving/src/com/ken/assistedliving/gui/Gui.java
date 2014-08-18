@@ -1,4 +1,6 @@
+package com.ken.assistedliving.gui;
 import javax.swing.JFrame;
+
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
@@ -11,6 +13,10 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JList;
+
+import com.ken.assistedliving.components.*;
+
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 

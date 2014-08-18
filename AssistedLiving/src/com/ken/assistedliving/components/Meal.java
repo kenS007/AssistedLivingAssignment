@@ -1,3 +1,6 @@
+package com.ken.assistedliving.components;
+
+
 
 
 
@@ -5,7 +8,7 @@ public class Meal {
 	
 	String mealType;
 
-	Course course;
+	public Course course;
 	
 	int order;
 	
