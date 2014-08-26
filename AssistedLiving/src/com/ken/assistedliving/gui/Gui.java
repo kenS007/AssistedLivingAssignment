@@ -1,12 +1,12 @@
 package com.ken.assistedliving.gui;
 import javax.swing.JFrame;
-
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JList;
 
 import com.ken.assistedliving.components.*;
-
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -43,11 +42,11 @@ public class Gui extends JFrame {
 	
 	JButton btnNewButton;
 	
-	DefaultListModel dlmBreakfast=new DefaultListModel();
-	DefaultListModel dlmLunch=new DefaultListModel();
-	DefaultListModel dlmDinner=new DefaultListModel();
-	private JList listBreakfast;
-	private JList listDinner;
+	DefaultListModel<String> dlmBreakfast=new DefaultListModel<String>();
+	DefaultListModel<String> dlmLunch=new DefaultListModel<String>();
+	DefaultListModel<String> dlmDinner=new DefaultListModel<String>();
+	private JList<String> listBreakfast;
+	private JList<String> listDinner;
 	
 	public Gui(){
 		
@@ -82,7 +81,7 @@ public class Gui extends JFrame {
 		scrollPane_4.setBounds(52, 47, 192, 306);
 		panel2.add(scrollPane_4);
 		
-		listBreakfast = new JList(dlmBreakfast);
+		listBreakfast = new JList<String>(dlmBreakfast);
 		scrollPane_4.setViewportView(listBreakfast);
 		
 		JLabel lblBreakfast = new JLabel("Breakfast");
@@ -101,15 +100,28 @@ public class Gui extends JFrame {
 		scrollPane_5.setBounds(282, 47, 192, 306);
 		panel2.add(scrollPane_5);
 		
-		JList listLunch = new JList(dlmLunch);
+		JList<String> listLunch = new JList<String>(dlmLunch);
 		scrollPane_5.setViewportView(listLunch);
 		
 		JScrollPane scrollPane_6 = new JScrollPane();
 		scrollPane_6.setBounds(505, 47, 192, 306);
 		panel2.add(scrollPane_6);
 		
-		listDinner = new JList(dlmDinner);
+		listDinner = new JList<String>(dlmDinner);
 		scrollPane_6.setViewportView(listDinner);
+		
+		JButton btnRandom = new JButton("Random");
+		btnRandom.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				randomMeals();
+			}
+		});
+		btnRandom.setBounds(175, 420, 117, 29);
+		panel2.add(btnRandom);
+		
+		JButton btnReset = new JButton("Reset");
+		btnReset.setBounds(313, 420, 117, 29);
+		panel2.add(btnReset);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(27, 65, 211, 259);
@@ -160,6 +172,7 @@ public class Gui extends JFrame {
 		courseList=load.loadCourse("courses.txt");
 		missingIngredientList=load.getMissingIngredients();
 		mealList=load.loadMeal("courses_restriction.txt");
+		organizeMeals();// put meals in appropriate array list based on their type;
 		
 		
 		populateTextArea();
@@ -217,23 +230,46 @@ public class Gui extends JFrame {
 		}
 	}
 	
-	
-	public void populateMeals(){
-		
+	public void organizeMeals(){   //put meals into arraylists based on their meal type
 		for(Meal meal:mealList){
 			if(meal.getMealType().equals("breakfast")){
-				breakfastList.add(meal);
-				
+				if(breakfastList.contains(meal)){
+					System.out.println("the meal "+meal.course.getName()+ " was not added in breakfast. it already exist");
+				}else{
+					breakfastList.add(meal);
+				}
 			}
 			if(meal.getMealType().equals("lunch")){
-				lunchList.add(meal);
+				if(lunchList.contains(meal)){
+					System.out.println("the meal "+meal.course.getName()+ " was not added in lunch. it already exist");
+				}else{
+					lunchList.add(meal);
+				}
 				
 			}if(meal.getMealType().equals("dinner")){
-				dinnerList.add(meal);
+				if(dinnerList.contains(meal)){
+					System.out.println("the meal "+meal.course.getName()+ " was not added in dinner. it already exist");
+				}else{
+					dinnerList.add(meal);
+				}
 			}
+		}
+	}
+	
+	
+	public void populateMeals(){
+		if(breakfastList.isEmpty()){
+			JOptionPane.showMessageDialog(btnNewButton, "No more breakfast");
+		}
+		if(lunchList.isEmpty()){
+			JOptionPane.showMessageDialog(btnNewButton, "No more lunch");
+		}
+		if(dinnerList.isEmpty()){
+			JOptionPane.showMessageDialog(btnNewButton, "No more dinner");
 		}
 		
 		for(int i=0;i<2;i++){
+			
 			dlmBreakfast.addElement(breakfastList.get(i).course.getName());
 			breakfastList.remove(i);
 			
@@ -248,6 +284,36 @@ public class Gui extends JFrame {
 		}
 		
 		
+		
+	}
+	public void randomMeals(){
+		if(breakfastList.isEmpty()){
+			JOptionPane.showMessageDialog(btnNewButton, "No more breakfast");
+		}
+		if(lunchList.isEmpty()){
+			JOptionPane.showMessageDialog(btnNewButton, "No more lunch");
+		}
+		if(dinnerList.isEmpty()){
+			JOptionPane.showMessageDialog(btnNewButton, "No more dinner");
+		}
+		
+		for(int i=0;i<2;i++){
+			int rand=(int)(Math.random()*breakfastList.size());
+			dlmBreakfast.addElement(breakfastList.get(rand).course.getName());
+			breakfastList.remove(rand);
+			
+			
+		}
+		for(int i=0;i<3;i++){
+			
+			int rand=(int)(Math.random()*lunchList.size());
+			dlmLunch.addElement(lunchList.get(rand).course.getName());
+			lunchList.remove(rand);
+			
+			int rand2=(int)(Math.random()*dinnerList.size());
+			dlmDinner.addElement(dinnerList.get(rand2).course.getName());
+			dinnerList.remove(rand2);
+		}
 		
 	}
 

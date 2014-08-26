@@ -50,10 +50,9 @@ public class LoadFile {
 
 	}
 
-	public void addInToCourse() {
+	
 
-	}
-
+	
 	public int getIngredientIndex(String ingName) {
 	
 		for (int i = 0; i < ingredientList.size(); i++) {
@@ -67,7 +66,16 @@ public class LoadFile {
 
 		return -1; // return -1 if the ingredient doesnt exist
 	}
+	
 
+	/**
+	 * scans textfile and returns and ArrayList of Courses
+	 * 
+	 * @param path
+	 *            - path of the textfile
+	 * @return ArrayList of Courses
+	 * 
+	 */
 	public ArrayList<Course> loadCourse(String path) {
 		// ArrayList<Course> courseList=new ArrayList<Course>();
 		File file = new File(path);
@@ -184,6 +192,14 @@ public class LoadFile {
 	
 	
 
+	/**
+	 * scans textfile and returns and ArrayList of Meals
+	 * 
+	 * @param path
+	 *            - path of the textfile
+	 * @return ArrayList of Meals
+	 * 
+	 */
 	public ArrayList<Meal> loadMeal(String path) {
 		ArrayList<Meal> mealList = new ArrayList<Meal>();
 		File file = new File(path);
@@ -194,6 +210,7 @@ public class LoadFile {
 				String line = in.nextLine();
 				String[] m = line.split(",");
 				Boolean courseExists=false;
+				Boolean mealExists=false;
 				
 				if(m.length==3){
 					m[0]=m[0].toLowerCase().trim();
@@ -201,20 +218,30 @@ public class LoadFile {
 					int order=Integer.parseInt(m[2].trim());
 					
 					//check if course exists
+					
 					for(Course course:courseList){
 						if(course.getName().equals(m[0])){
+							for(Meal meal:mealList){
+								if(meal.course.getName().equals(m[0])&&meal.getOrder()==order&&meal.getMealType().equals(m[1])){
+									System.out.println(meal.course.getName()+" restriction already exist");
+									mealExists=true;
+									break;
+								}
+							}
+							
 							System.out.println("!");
 							courseExists=true;
 							//if(doesMealExists(m[1],course)){
 							//	System.out.println(m[1]+" is "+m[0]);
 							//}
-							Meal meal=new Meal();
-							meal.setMealType(m[1]);
-							meal.addCourse(course);
-							meal.setOrder(order);
-							
-							mealList.add(meal);
-	
+							if(!mealExists){
+								Meal meal=new Meal();
+								meal.setMealType(m[1]);
+								meal.addCourse(course);
+								meal.setOrder(order);
+								
+								mealList.add(meal);
+							}
 							break;
 						}
 					}
@@ -238,6 +265,14 @@ public class LoadFile {
 		return mealList;
 	}
 
+	/**
+	 * scans textfile and returns the string contents of the text file
+	 * 
+	 * @param path
+	 *            - path of the textfile
+	 * @return ArrayList of Strings
+	 * 
+	 */
 	public ArrayList<String> loadCourseString(String path) {
 		ArrayList<String> courseListS = new ArrayList<String>();
 		File file = new File(path);
