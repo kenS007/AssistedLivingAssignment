@@ -14,6 +14,8 @@ public class Ingredient {
 	 */
 	double numOfUnits;
 	
+	private int id;
+	
 	
 	public Ingredient(){
 		
@@ -48,6 +50,7 @@ public class Ingredient {
 	public double getUnits(){
 		return numOfUnits;
 	}
+
 
 	
 	

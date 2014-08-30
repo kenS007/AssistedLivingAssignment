@@ -54,6 +54,11 @@ public class FileMaker extends JFrame {
 		panel.add(btnMakefile);
 
 		JButton btnAppendFile = new JButton("append File");
+		btnAppendFile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnAppendFile.setBounds(6, 304, 117, 29);
 		panel.add(btnAppendFile);
 
@@ -114,6 +119,10 @@ public class FileMaker extends JFrame {
 		panel.add(lblMultiPasta);
 
 		JButton btnAddMulti = new JButton("add Multi");
+		btnAddMulti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnAddMulti.setBounds(6, 257, 117, 29);
 		panel.add(btnAddMulti);
 
@@ -151,11 +160,11 @@ public class FileMaker extends JFrame {
 		panel2.add(lblCourse);
 
 		JButton btnNewCourseFile = new JButton("new Course File");
-		btnNewCourseFile.setBounds(169, 343, 135, 29);
+		btnNewCourseFile.setBounds(167, 452, 135, 29);
 		panel2.add(btnNewCourseFile);
 
 		JButton btnAppendCourseFile = new JButton("Append Course File");
-		btnAppendCourseFile.setBounds(6, 343, 151, 29);
+		btnAppendCourseFile.setBounds(6, 452, 151, 29);
 		panel2.add(btnAppendCourseFile);
 
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -167,46 +176,46 @@ public class FileMaker extends JFrame {
 
 		JComboBox comboBox = new JComboBox();
 		comboBox.setEditable(true);
-		comboBox.setBounds(6, 87, 123, 29);
+		comboBox.setBounds(80, 90, 123, 29);
 		panel2.add(comboBox);
 
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setEditable(true);
-		comboBox_1.setBounds(141, 87, 111, 27);
+		comboBox_1.setBounds(80, 128, 111, 27);
 		panel2.add(comboBox_1);
 
 		textField_1 = new JTextField();
-		textField_1.setBounds(263, 87, 64, 28);
+		textField_1.setBounds(220, 131, 64, 28);
 		panel2.add(textField_1);
 		textField_1.setColumns(10);
 
 		JButton btnAddCourse = new JButton("Add Course");
-		btnAddCourse.setBounds(86, 119, 117, 29);
+		btnAddCourse.setBounds(56, 167, 117, 29);
 		panel2.add(btnAddCourse);
 
 		JLabel lblCName = new JLabel("C name");
-		lblCName.setBounds(21, 62, 61, 16);
+		lblCName.setBounds(16, 96, 61, 16);
 		panel2.add(lblCName);
 
 		JLabel lblIngredient_1 = new JLabel("Ingredient");
-		lblIngredient_1.setBounds(154, 59, 93, 16);
+		lblIngredient_1.setBounds(6, 131, 93, 16);
 		panel2.add(lblIngredient_1);
 
 		JLabel lblNumOfUnits = new JLabel("num of units");
-		lblNumOfUnits.setBounds(266, 59, 81, 16);
+		lblNumOfUnits.setBounds(220, 119, 81, 16);
 		panel2.add(lblNumOfUnits);
 
 		JTextArea textArea_1 = new JTextArea();
-		textArea_1.setBounds(6, 181, 392, 113);
+		textArea_1.setBounds(6, 316, 392, 113);
 		panel2.add(textArea_1);
 
 		JLabel lblMultiPasta_1 = new JLabel(
 				"Multi Pasta- yo make sure format is correct");
-		lblMultiPasta_1.setBounds(6, 153, 330, 16);
+		lblMultiPasta_1.setBounds(6, 293, 330, 16);
 		panel2.add(lblMultiPasta_1);
 
 		JButton btnAddCMulti = new JButton("Add C multi");
-		btnAddCMulti.setBounds(24, 302, 117, 29);
+		btnAddCMulti.setBounds(24, 427, 117, 29);
 		panel2.add(btnAddCMulti);
 
 		JPanel panel3 = new JPanel();
@@ -282,6 +291,11 @@ public class FileMaker extends JFrame {
 				textAreaLogIn.append(inName + ", " + inCost + " Added!\n");
 			}
 		}
+	}
+	
+	
+	public static void addMulti(){
+		
 	}
 
 	public static void main(String[] args) {

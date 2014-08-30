@@ -14,6 +14,8 @@ public class Course {
 	
 	private String[] MealType;
 	
+	private int id;
+	
 	
 	public void setName(String name){
 		this.name=name;

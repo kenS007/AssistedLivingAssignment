@@ -31,6 +31,10 @@ public class Meal {
 		return order;
 	}
 	
+	public String toString(){
+		return mealType+": "+course.toString();
+	}
+	
 	
 
 }

@@ -201,7 +201,7 @@ public class LoadFile {
 	 * 
 	 */
 	public ArrayList<Meal> loadMeal(String path) {
-		ArrayList<Meal> mealList = new ArrayList<Meal>();
+		//ArrayList<Meal> mealList = new ArrayList<Meal>();
 		File file = new File(path);
 
 		try {
@@ -318,7 +318,13 @@ public class LoadFile {
 		return missingIngredientList;
 	}
 	
-	
+	public ArrayList<Meal> loadEverything(){
+		loadIngredient("ingredients.txt");
+		loadCourse("courses.txt");
+		loadMeal("courses_restriction.txt");
+		
+		return mealList;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
