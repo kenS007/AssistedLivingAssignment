@@ -247,8 +247,8 @@ public class MealGui extends JFrame {
 		
 		createJList();
 		for(int i=0;i<dlmList.size();i++){
-			dlmList.get(i).addElement("fuck");
-			dlmList.get(i).addElement("cunt");
+			dlmList.get(i).addElement("hi");
+			dlmList.get(i).addElement("hello");
 		}
 		setVisible(true);
 	}
