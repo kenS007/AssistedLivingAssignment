@@ -353,7 +353,7 @@ public class LoadFile {
 		loadIngredient("ingredients.txt");
 		loadCourse("courses.txt");
 		loadMeal("courses_restriction.txt");
-		
+		 
 		return mealList;
 	}
 	public void loadEverything2(){
