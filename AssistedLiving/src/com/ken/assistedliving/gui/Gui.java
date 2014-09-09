@@ -168,8 +168,8 @@ public class Gui extends JFrame {
 		scrollPane_3.setViewportView(textAreaMissingIn);
 		
 		
-		ingredientList=load.loadIngredient("ingredients.txt");
-		courseList=load.loadCourse("courses.txt");
+		//ingredientList=load.loadIngredient("ingredients.txt");
+		//courseList=load.loadCourse("courses.txt");
 		missingIngredientList=load.getMissingIngredients();
 		mealList=load.loadMeal("courses_restriction.txt");
 		organizeMeals();// put meals in appropriate array list based on their type;

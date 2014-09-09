@@ -37,7 +37,7 @@ public class Ingredient {
 		this.cost=cost;
 	}
 	public double getCost(){
-		return cost;
+		return cost*numOfUnits;
 	}
 	
 	public String toString(){

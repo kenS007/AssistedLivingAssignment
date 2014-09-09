@@ -1,5 +1,5 @@
 Cornflakes, cornflakes, 1
-Cornflakes, milk, 1
+Cornflakes, milk, 0.5
 Cornflakes, sugar, 1
 Orange juice, orange juice, 1
 Spaghetti bolognaise, mince, 1
@@ -7,27 +7,25 @@ Spaghetti bolognaise, carrot, 1
 Spaghetti bolognaise, cheese, 1
 Spaghetti bolognaise, pasta, 2
 Spaghetti bolognaise, onion, 1
-Spaghetti bolognaise, carrot, 1
 Spaghetti bolognaise, garlic, 1
 Spaghetti bolognaise, frozen pea, 1
-blackcurrent juice, orange juice, 1
+blackcurrent juice, blackcurrent juice, 1
 toast, bread, 0.01
-toast, margarine, 0.01
+toast, butter, 0.01
 toast, jam, 0.01
 porridge, oats, 0.05
 porridge, salt, 0.001
 porridge, milk, 0.1
-cornflakes, milk, 0.1
-cornflakes, cornflakes, 0.1
 muesli, meusli, 0.1
+muesli, milk, 0.2
 cheese sandwich, bread, 0.02
-cheese sandwich, margarine, 0.02
+cheese sandwich, butter, 0.02
 cheese sandwich, cheese, 0.05
 cheese sandwich, lettuce, 0.05
 beans on toast, beans, 1
 beans on toast, bread, 0.01
 ham sandwich, bread, 0.02
-ham sandwich, margarine, 0.02
+ham sandwich, butter, 0.02
 ham sandwich, ham, 0.2
 ham sandwich, lettuce, 0.05
 noodles, noodles, 1
@@ -35,6 +33,47 @@ apple, apple, 1
 banana, banana, 1
 orange, orange, 1
 pear, pear, 1
-yoghurt, 1
-
-Bored: Will add more later
+yoghurt, yoghurt, 1
+boysenberry nice-cream, cashew nuts, 0.2
+boysenberry nice-cream, honey, 0.03
+boysenberry nice-cream, boysenberry, 0.3
+blueberry and cashew cheesecake, cashew nuts, 0.5
+blueberry and cashew cheesecake, dates, 0.3
+blueberry and cashew cheesecake, blueberries, 0.1
+blueberry and cashew cheesecake, almonds, 0.2
+cos caesar, bread, 0.3
+cos caesar, oil, 0.01
+cos caesar, salt, 0.001
+cos caesar, lettuce, 1
+cos caesar, cheese, 0.2
+seedy slaw, cabbage, 0.05
+seedy slaw, carrot, 2
+seedy slaw, mixed seeds, 0.7
+milk, milk, 3
+revive dorf salad, apple, 3
+revive dorf salad, celery, 0.6
+revive dorf salad, spinach, 0.5
+pumpkin and kumara balls, pumpkin, 0.3
+pumpkin and kumara balls, kumara, 0.6
+pumpkin and kumara balls, oil, 0.01
+pumpkin and kumara balls, salt, 0.001
+pumpkin and kumara balls, garlic, 1
+garlic bread, garlic, 1
+garlic bread, bread, 0.5
+garlic bread, butter, 0.03
+Soup, celery, 1
+Soup, kumara, 0.3
+Soup, pumpkin, 0.2
+Soup, cabbage, 0.1
+steak and chips, potato, 0.3
+steak and chips, steak, 0.5
+steak and chips, herb salad, 1
+steak and chips, honey, 0.03
+bacon pea risotto, onion, 1
+bacon pea risotto, bacon, 0.5
+bacon pea risotto, rice, 0.3
+bacon pea risotto, peas, 0.2
+banana blast, banana, 1
+banana blast, milk, 1
+orange smothie, orange, 1
+orange smothie, milk, 1

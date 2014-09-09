@@ -10,11 +10,33 @@ public class Course {
 	private String name;
 	
 	
-	private Double cost;
+	private Double Coursecost;
 	
-	private String[] MealType;
+	//private String[] MealType;
 	
 	private int id;
+	
+	ArrayList<Restriction> restrictions=new ArrayList<Restriction>();
+	
+	
+	
+	private void setCourseCost(){
+		
+	}
+	
+	
+	public void addRestriction(String mealType,int slot){
+		Restriction res=new Restriction();
+		
+		//add stuff for error checking
+		
+		res.setRestriction(mealType, slot);
+		restrictions.add(res);
+	}
+	
+	public ArrayList<Restriction> getRestrictions(){
+		return restrictions;
+	}
 	
 	
 	public void setName(String name){
@@ -71,7 +93,7 @@ public class Course {
 	}
 	
 	public String toString(){
-		return name+" "+ingredientList;
+		return name+" "+ingredientList+" "+restrictions;
 	}
 	
 	public ArrayList<Ingredient> getIngredientlist(){
@@ -85,9 +107,5 @@ public class Course {
 	
 	
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }

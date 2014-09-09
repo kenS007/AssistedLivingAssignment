@@ -1,12 +1,46 @@
 package com.ken.assistedliving.genetics;
 
+import java.util.ArrayList;
+
+import com.ken.assistedliving.components.Day;
+
 public class Chromosome {
+	
+	
+	//private Day[] dayChromosome=new Day[7]; //this is the chromosome of 7 days
+	private ArrayList<Day> week=new ArrayList<Day>();
 	
 	private String theChromosomeString="";
 	private int theChromosomeFitness=-1;
 	private double fitnessPercentageOfCurrentPopulation=0;
 	private double rouletteStartPosition;
 	private double rouletteFinishPosition;
+	
+	
+	
+	private double fitnessFuction(){  //fitness function for the week
+		
+		
+		
+		//first calculate the total cost of the chromosome(week)
+		double total=0;
+		for(Day d:week){
+			total=total+d.getTotalCost();
+		}
+		
+		//then return inverse
+		return 1/total;
+	}
+	
+	public void addWeek(ArrayList<Day> week){
+		this.week=week;
+	}
+	
+	public Chromosome(){
+		
+	}
+	
+	
 	
 	public Chromosome(String theChromosomeString){
 		this.theChromosomeString=theChromosomeString;

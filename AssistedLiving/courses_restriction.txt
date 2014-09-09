@@ -21,5 +21,30 @@ pear, lunch, 2
 pear, dinner, 2
 yoghurt, lunch, 2
 yoghurt, dinner, 2
-
-Bored: Will add more later
+noodles, dinner, 1
+boysenberry nice-cream, lunch, 3
+boysenberry nice-cream, dinner, 3
+blueberry and cashew cheesecake, lunch, 3
+blueberry and cashew cheesecake, dinner, 3
+cos caesar, dinner, 1
+cos caesar, lunch, 1
+seedy slaw, dinner, 1
+seedy slaw, lunch, 1
+milk, breakfast, 1
+revive dorf salad, dinner, 1
+revive dorf salad, lunch, 1
+pumpkin and kumara balls, dinner, 2
+pumpkin and kumara balls, lunch, 2
+garlic bread, lunch, 1
+garlic bread, lunch, 2
+garlic bread, dinner, 1
+steak and chips, lunch, 2
+steak and chips, dinner, 2
+bacon pea risotto, lunch, 2
+bacon pea risotto, dinner, 2
+banana blast, breakfast, 1
+banana blast, dinner, 3
+banana blast, lunch, 3
+orange smothie, breakfast, 1
+orange smothie, lunch, 3
+orange smothie, dinner, 3

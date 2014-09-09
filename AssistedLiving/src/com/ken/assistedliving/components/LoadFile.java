@@ -20,7 +20,7 @@ public class LoadFile {
 	 * @return ArrayList of Ingredients
 	 * 
 	 */
-	public ArrayList<Ingredient> loadIngredient(String path) {
+	public void loadIngredient(String path) {
 		// ArrayList<Ingredient> ingredientList=new ArrayList<Ingredient>();
 		File file = new File(path);
 		try {
@@ -46,7 +46,7 @@ public class LoadFile {
 			ex.printStackTrace();
 		}
 
-		return ingredientList;
+		//return ingredientList;
 
 	}
 
@@ -76,7 +76,7 @@ public class LoadFile {
 	 * @return ArrayList of Courses
 	 * 
 	 */
-	public ArrayList<Course> loadCourse(String path) {
+	public void loadCourse(String path) {
 		// ArrayList<Course> courseList=new ArrayList<Course>();
 		File file = new File(path);
 
@@ -153,24 +153,10 @@ public class LoadFile {
 							missingIngredientList.add(line.toLowerCase());
 						}
 						courseList.add(cor);
-						/* // add ingredient
-						int indx = getIngredientIndex(c[1]);
 						
-						if (indx != -1) {// if ingredient is in the list
-							System.out.println("this lol "+ingredientList.get(indx));
-  							cor.addIngredient(ingredientList.get(indx));
-  							//cor.addIngredient(ingredientList.get(1));
-					
-							System.out.println(c[1]+"added");
-
-						} else {
-							System.out.println("!error:ingredient: " + c[1]
-									+ " doesnt exist");
-						}
-						courseList.add(cor);
 						
-						*/
-
+						
+						
 					}
 					//System.out.println(courseList.toString());
 
@@ -187,7 +173,7 @@ public class LoadFile {
 			System.out.println(missingIngredientList.get(i));
 		}
 
-		return courseList;
+		//return courseList;
 	}
 	
 	
@@ -264,6 +250,51 @@ public class LoadFile {
 
 		return mealList;
 	}
+	
+	
+	public void loadCourseRestriction(String path){
+		File file=new File(path);
+		
+		try{
+			Scanner in=new Scanner(file);
+			
+			
+			while(in.hasNext()){
+				String line=in.nextLine();
+				String[] cR=line.split(",");
+				
+				
+				if(cR.length==3){
+					cR[0]=cR[0].toLowerCase().trim();
+					cR[1]=cR[1].toLowerCase().trim();
+					int slot=Integer.parseInt(cR[2].trim());
+					
+					for(Course course:courseList){
+						if(course.getName().equals(cR[0])){  
+							course.addRestriction(cR[1], slot);
+							
+						}
+					}
+					
+					
+				}
+			}
+			
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * scans textfile and returns the string contents of the text file
@@ -325,17 +356,27 @@ public class LoadFile {
 		
 		return mealList;
 	}
+	public void loadEverything2(){
+		loadIngredient("ingredients.txt");
+		loadCourse("courses.txt");
+		loadCourseRestriction("courses_restriction.txt");
+	
+	}
+	
+	public ArrayList<Course> getCourseList(){
+		return courseList;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		LoadFile load = new LoadFile();
+		/*LoadFile load = new LoadFile();
 		// load.loadtxt("ingredients.txt");
 		// load.loadCourseString("courses.txt");
 		load.loadIngredient("ingredients.txt");
 		load.loadCourse("courses.txt");
 		load.loadMeal("courses_restriction.txt");
-		
+		*/
 		
 
 	}

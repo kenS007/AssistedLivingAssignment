@@ -247,7 +247,7 @@ public class FileMaker extends JFrame {
 	}
 
 	private void loadInFile() {
-		ingredientList = load.loadIngredient("ingredients.txt");
+		//ingredientList = load.loadIngredient("ingredients.txt");
 
 		for (Ingredient ingredient : ingredientList) {
 			dlmIngredient.addElement(ingredient.getName());
