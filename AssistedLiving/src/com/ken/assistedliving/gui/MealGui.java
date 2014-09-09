@@ -158,18 +158,7 @@ public class MealGui extends JFrame {
 		
 		
 		createJList();
-//<<<<<<< HEAD
-		
-		
-		
-		
-		
-		
-		
-		
-//=======
-		
-//>>>>>>> refs/remotes/origin/master
+
 		setVisible(true);
 		
 		progressBar.setIndeterminate(true);

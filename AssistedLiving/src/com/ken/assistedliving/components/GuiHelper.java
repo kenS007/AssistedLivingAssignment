@@ -8,21 +8,27 @@ import org.hamcrest.CoreMatchers;
 
 public class GuiHelper {
 
-	Random randomGenerator = new Random();
+	Random randomGenerator = new Random();  //random generator
 
-	ArrayList<Meal> mealList = new ArrayList<Meal>();
+	ArrayList<Meal> mealList = new ArrayList<Meal>();  //currently not used
+	
 	ArrayList<Course> courseList = new ArrayList<Course>();
 
 	ArrayList<Day> tempDay = new ArrayList<Day>(); // used to store used courses
 													// in a day to prevent
 													// duplicate
 
-	private LoadFile load = new LoadFile();
-
-	private Hashtable<String, ArrayList<Integer>> courseRes = new Hashtable<String, ArrayList<Integer>>();
+	private LoadFile load = new LoadFile(); //new instance of load file class
+	
+	//hash table to store course restrictions the arraylist is the indec of that course in the courselist Arraylist
+	private Hashtable<String, ArrayList<Integer>> courseRes = new Hashtable<String, ArrayList<Integer>>(); 
+	
+	//hashtable used to record the index of the combo of used courses in meal. this is used for checkin ifcourse combo
+	//already exist
 	private Hashtable<String, ArrayList<IndexCombo>> usedCombo = new Hashtable<String, ArrayList<IndexCombo>>();
 
 	public GuiHelper() {
+		//creating arraylists for the CourseRes hashtable
 		ArrayList<Integer> b1 = new ArrayList<Integer>();
 		ArrayList<Integer> b2 = new ArrayList<Integer>();
 		ArrayList<Integer> l1 = new ArrayList<Integer>();
@@ -32,6 +38,8 @@ public class GuiHelper {
 		ArrayList<Integer> d2 = new ArrayList<Integer>();
 		ArrayList<Integer> d3 = new ArrayList<Integer>();
 
+		//adding it to the hashtable
+		//the b1,b2,l1 etc means the course num in the meal
 		courseRes.put("b1", b1);
 		courseRes.put("b2", b2);
 		courseRes.put("l1", l1);
@@ -44,7 +52,7 @@ public class GuiHelper {
 
 	}
 
-	private void comboArray() {
+	private void comboArray() { //add arraylist to the combo hashtable
 		ArrayList<IndexCombo> b = new ArrayList<IndexCombo>();
 		ArrayList<IndexCombo> l = new ArrayList<IndexCombo>();
 		ArrayList<IndexCombo> d = new ArrayList<IndexCombo>();
@@ -55,12 +63,12 @@ public class GuiHelper {
 		usedCombo.put("dinner", d);
 	}
 
-	private void loadMeals() {
+	private void loadMeals() {  //currently not used will delete this soon
 		mealList = load.loadEverything();
 		System.out.println(mealList.toString());
 	}
 
-	public void loadCourses() {
+	public void loadCourses() { //load courses
 		load.loadEverything2();
 		courseList = load.getCourseList();
 		System.out.println(courseList.toString());
@@ -69,7 +77,9 @@ public class GuiHelper {
 		System.out.println(courseRes);
 	}
 
-	private void mapRestrictions() {
+	private void mapRestrictions() { //map the course restiction this will add the index of this 
+									//course to the hashtable with the appropriate key
+		
 		for (int i = 0; i < courseList.size(); i++) {
 			// if(courseList.get(i).getRestrictions())
 			for (Restriction restriction : courseList.get(i).getRestrictions()) { // check
@@ -212,24 +222,9 @@ public class GuiHelper {
 
 	// /////////////////////////////////////////////////////////////////
 
-	private void dayWithRandom() {
-		Day day = new Day();
+	
 
-	}
-
-	private void randomBreakfast() {
-		// 2 courses
-	}
-
-	private void randomLunch() {
-		// 3 courses
-	}
-
-	private void randomDinner() {
-
-	}
-
-	public static void main(String[] args) {
+	public static void main(String[] args) { //for testing
 		// TODO Auto-generated method stub
 		GuiHelper h = new GuiHelper();
 		h.loadCourses();

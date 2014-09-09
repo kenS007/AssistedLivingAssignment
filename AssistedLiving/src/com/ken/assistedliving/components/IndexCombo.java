@@ -1,7 +1,7 @@
 package com.ken.assistedliving.components;
 import java.lang.Object;
-import java.util.Objects;
-public class IndexCombo {
+//import java.util.Objects;
+public class IndexCombo { //this class is used to record the index of the course from the course arraylist in GuiHelper
 
 	int slot1=0;
 	int slot2=0;
