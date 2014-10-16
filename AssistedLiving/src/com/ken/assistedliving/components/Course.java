@@ -55,10 +55,11 @@ public class Course {
 			total=total+ingredient.getCost();
 		}
 		
-		
+		//System.out.println(name+" "+"Total Course: "+total);
 		
 		return total;
 	}
+	
 	public Boolean ingredientExists(String ingredient){
 		for(Ingredient ing :ingredientList){
 			if(ing.getName().equals(ingredient)){//the ingredient is alredy in the list

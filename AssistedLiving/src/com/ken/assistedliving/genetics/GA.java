@@ -15,14 +15,19 @@ public class GA {
 	}
 	
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public void startGA(int populationSize){
+		//generate initial population
+		generateInitialPopulation(populationSize);
+		
+		//select a pair of chromosomes for mating frim the current population
+		
+		
 	}
 	
 	
 	
-	public void generateInitialPopulation(int populationSize){
+	
+	private void generateInitialPopulation(int populationSize){
 		
 		for(int i=0;i<populationSize;i++){
 			theChromosomes.add(i, getARandomChromosome());
@@ -34,7 +39,7 @@ public class GA {
 	private Chromosome getARandomChromosome(){
 		Chromosome chromosome =new Chromosome();
 		chromosome.addWeek(helper.createRandomMealForWeek());
-		
+		chromosome.setFitnessFunction();
 		return chromosome;
 	}
 

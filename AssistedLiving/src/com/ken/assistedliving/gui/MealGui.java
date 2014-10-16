@@ -111,7 +111,7 @@ public class MealGui extends JFrame {
 		panel.add(btnRandomMeals);
 		
 		 panel_1 = new JPanel();
-		panel_1.setBounds(89, 71, 770, 320);
+		panel_1.setBounds(72, 71, 808, 320);
 		panel.add(panel_1);
 		panel_1.setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.RELATED_GAP_COLSPEC,
@@ -149,7 +149,7 @@ public class MealGui extends JFrame {
 		btnStartGa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				startGA();
 			}
 		});
 		btnStartGa.setBounds(70, 470, 117, 29);
@@ -273,7 +273,8 @@ public class MealGui extends JFrame {
 	
 	
 	private void startGA(){
-		genetic.generateInitialPopulation(Integer.parseInt(textField_population.getText().trim()));
+		genetic.startGA(Integer.parseInt(textField_population.getText().trim())); //start GA pass the parameters(pop size and criterion)
+		//genetic.generateInitialPopulation(100);
 	}
 	
 

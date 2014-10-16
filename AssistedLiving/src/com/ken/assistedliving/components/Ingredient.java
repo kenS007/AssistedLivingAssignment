@@ -14,8 +14,7 @@ public class Ingredient {
 	 */
 	double numOfUnits;
 	
-	private int id;
-	
+
 	
 	public Ingredient(){
 		
@@ -45,7 +44,8 @@ public class Ingredient {
 	}
 	
 	public void addNumUnitBy(double num){
-		numOfUnits=numOfUnits+num;
+		//numOfUnits=numOfUnits+num;
+		this.numOfUnits=num;
 	}
 	public double getUnits(){
 		return numOfUnits;

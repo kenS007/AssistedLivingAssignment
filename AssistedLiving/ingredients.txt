@@ -1,6 +1,6 @@
 cornflakes, 0.50
 mince, 2
-orange juice, 0.4
+orange juice, 4
 frozen pea, 0.2
 carrot, 0.1
 pasta, 0.3

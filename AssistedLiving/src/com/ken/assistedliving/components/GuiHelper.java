@@ -142,6 +142,7 @@ public class GuiHelper {
 		ArrayList<Day> week = new ArrayList<Day>();
 
 		for (int i = 0; i < 7; i++) { // loop 7 for 7 days
+			//System.out.println("new Day");
 			Day day = new Day(); // today
 
 			// generate 2 breakfast and 3 lunch and dinner
@@ -161,7 +162,7 @@ public class GuiHelper {
 					breakExist = false;
 				}
 				else{
-					System.out.println("breakfast duplicate");
+					//System.out.println("breakfast duplicate");
 				}
 
 			}
@@ -182,7 +183,7 @@ public class GuiHelper {
 					
 					lunchExist = false;
 				}else{
-					System.out.println("lunch duplicate");
+					//System.out.println("lunch duplicate");
 				}
 
 			}
@@ -202,7 +203,7 @@ public class GuiHelper {
 					dinnerExist=false;
 				}
 				else{
-					System.out.println("dinner duplicate");
+					//System.out.println("dinner duplicate");
 				}
 			
 				week.add(day);

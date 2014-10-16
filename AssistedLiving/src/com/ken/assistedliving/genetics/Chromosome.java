@@ -11,7 +11,7 @@ public class Chromosome {
 	private ArrayList<Day> week=new ArrayList<Day>();
 	
 	private String theChromosomeString="";
-	private int theChromosomeFitness=-1;
+	private double theChromosomeFitness=-1;
 	private double fitnessPercentageOfCurrentPopulation=0;
 	private double rouletteStartPosition;
 	private double rouletteFinishPosition;
@@ -28,6 +28,8 @@ public class Chromosome {
 			total=total+d.getTotalCost();
 		}
 		
+		System.out.println("Total week$: "+total);
+		System.out.println("Fitness: "+ 1/total);
 		//then return inverse
 		return 1/total;
 	}
@@ -35,14 +37,17 @@ public class Chromosome {
 	public void addWeek(ArrayList<Day> week){
 		this.week=week;
 	}
+	public void setFitnessFunction(){
+		theChromosomeFitness=fitnessFuction();
+	}
 	
 	public Chromosome(){
-		
+		//theChromosomeFitness=fitnessFuction();
 	}
 	
 	
 	
-	public Chromosome(String theChromosomeString){
+	public Chromosome(String theChromosomeString){ ///////
 		this.theChromosomeString=theChromosomeString;
 		
 		//step 4
@@ -81,11 +86,11 @@ public class Chromosome {
 		this.theChromosomeString = theChromosomeString;
 	}
 
-	public int getTheChromosomeFitness() {
+	public double getTheChromosomeFitness() {
 		return theChromosomeFitness;
 	}
 
-	public void setTheChromosomeFitness(int theChromosomeFitness) {
+	public void setTheChromosomeFitness(double theChromosomeFitness) {
 		this.theChromosomeFitness = theChromosomeFitness;
 	}
 

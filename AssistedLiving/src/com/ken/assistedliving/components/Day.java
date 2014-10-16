@@ -25,6 +25,8 @@ public class Day {
 		for(Course c:dinner){
 			total=total+c.getTotalCost();
 		}
+		
+	//	System.out.println("Total day: "+total);
 		return total;
 	}
 	
