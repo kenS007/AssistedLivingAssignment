@@ -17,8 +17,15 @@ public class Chromosome {
 	private double rouletteFinishPosition;
 	
 	
+	public double getTotalCost(){
+		double total=0;
+		for(Day d:week){
+			total=total+d.getTotalCost();
+		}
+		return total;
+	}
 	
-	private double fitnessFuction(){  //fitness function for the week
+	public void setFitnessFunction(){  //fitness function for the week
 		
 		
 		
@@ -31,15 +38,16 @@ public class Chromosome {
 		System.out.println("Total week$: "+total);
 		System.out.println("Fitness: "+ 1/total);
 		//then return inverse
-		return 1/total;
+		//return 1/total;
+		theChromosomeFitness=1/total;
 	}
 	
 	public void addWeek(ArrayList<Day> week){
 		this.week=week;
 	}
-	public void setFitnessFunction(){
-		theChromosomeFitness=fitnessFuction();
-	}
+	//public void setFitnessFunction(){
+		//theChromosomeFitness=fitnessFuction();
+	//}
 	
 	public Chromosome(){
 		//theChromosomeFitness=fitnessFuction();
@@ -120,7 +128,15 @@ public class Chromosome {
 	}
 
 	
+	public ArrayList<Day> getWeek(){
+		return week;
+	}
 	
+	
+	public Day getDay(int indx){
+		return week.get(indx);
+		
+	}
 	
 	
 

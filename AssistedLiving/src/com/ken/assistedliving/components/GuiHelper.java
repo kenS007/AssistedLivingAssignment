@@ -3,6 +3,7 @@ package com.ken.assistedliving.components;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
+import java.util.Set;
 
 import org.hamcrest.CoreMatchers;
 
@@ -75,6 +76,8 @@ public class GuiHelper {
 
 		mapRestrictions(); //
 		System.out.println(courseRes);
+		System.out.println("================================================");
+		test();
 	}
 
 	private void mapRestrictions() { //map the course restiction this will add the index of this 
@@ -223,12 +226,125 @@ public class GuiHelper {
 
 	// /////////////////////////////////////////////////////////////////
 
+	public void mutationHelper(ArrayList<Day> week,String res,Course otherCourse,String type){
+	
+		//we need to check if there is a duplicate
+		
+		
+		//first map the courses comos in the chromosome
+		
+	
+		
+		
+		
+		
+		for(int i=0;i<7;i++){
+			
+			IndexCombo icB = new IndexCombo();
+			icB.setBreakfastIndex(getKey(week.get(i).getBreakfastItem(0)), getKey(week.get(i).getBreakfastItem(2)));
+		//	if (!usedCombo.get("breakfast").contains(icB)) {
+				usedCombo.get("breakfast").add(icB);
+			
+			//}
+			
+			IndexCombo icL=new IndexCombo();
+			icL.setLunchIndex(getKey(week.get(i).getLunchItem(0)), 
+							getKey(week.get(i).getLunchItem(1)), 
+							getKey(week.get(i).getLunchItem(2)));
+			
+			//if(!usedCombo.get("lunch").contains(icL)){
+				usedCombo.get("lunch").add(icL);
+				
+			//}
+			
+			
+			IndexCombo icD=new IndexCombo();
+			icL.setDinnerIndex(getKey(week.get(i).getDinnerItem(0)), 
+					getKey(week.get(i).getDinnerItem(1)), 
+					getKey(week.get(i).getDinnerItem(2)));
+
+			//if(!usedCombo.get("dinner").contains(icD)){
+				usedCombo.get("dinner").add(icD);
+				
+
+			
+		}
+		//finished mapping 
+		//now we get a random course
+		Course tempC =new Course();
+		
+		int newkey=randomGenerator.nextInt(courseRes.get("res").size());
+			
+		
+		
+		
+		if(type=="breakfast"){
+			if(res=="b1"){
+				int slot1=courseRes.get("res").size(); //this will be random
+				int slot2=getKey(otherCourse);
+				
+			}
+			if(res=="b2"){
+				int slot1=getKey(otherCourse);
+				int slot2=courseRes.get("res").size(); //this will be random
+;
+				
+			}
+		}
+		if(type=="lunch"){
+			if(res=="l1"){
+			
+				
+			}
+			if(res=="l2"){
+				
+			}
+			if(res=="l3"){
+				
+			}
+			
+			
+		}
+		if(type=="dinner"){
+			if(res=="d1"){
+				
+			}
+			if(res=="d1"){
+				
+			}
+			if(res=="d1"){
+				
+			}
+		}
+		
+		
+		
+		
+		
+	}
+	
+	private int getKey(Course cor){
+		//courseList.indexOf(cor);
+		
+		return courseList.indexOf(cor);
+	}
+	
+	
+	private void test(){
+		System.out.println(courseList.get(2));
+		Course ct=courseList.get(2);
+		System.out.println(getKey(ct));
+	}
+	
 	
 
 	public static void main(String[] args) { //for testing
 		// TODO Auto-generated method stub
 		GuiHelper h = new GuiHelper();
 		h.loadCourses();
+		
+		
+		
 
 	}
 

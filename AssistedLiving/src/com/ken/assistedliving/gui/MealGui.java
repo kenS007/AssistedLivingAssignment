@@ -48,6 +48,11 @@ public class MealGui extends JFrame {
 	
 	JPanel panel_1;
 	private JTextField textField_population;
+	private JTextField textFieldmutate;
+	private JTextField textFieldCrossover;
+	private JTextField textFieldMaxGen;
+	private JTextField textFieldMaxCost;
+	JProgressBar progressBar;
 	
 	public MealGui(){
 		
@@ -136,13 +141,13 @@ public class MealGui extends JFrame {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),}));
 		
-		JProgressBar progressBar = new JProgressBar();
+		 progressBar = new JProgressBar();
 		progressBar.setVisible(false);
-		progressBar.setBounds(245, 552, 363, 20);
+		progressBar.setBounds(29, 552, 363, 20);
 		panel.add(progressBar);
 		
 		JLabel lblStatus = new JLabel("Status:");
-		lblStatus.setBounds(245, 524, 61, 16);
+		lblStatus.setBounds(41, 529, 61, 16);
 		panel.add(lblStatus);
 		
 		JButton btnStartGa = new JButton("Start G.A.");
@@ -159,7 +164,7 @@ public class MealGui extends JFrame {
 		
 		createJList();
 
-		setVisible(true);
+		
 		
 		progressBar.setIndeterminate(true);
 		
@@ -168,6 +173,7 @@ public class MealGui extends JFrame {
 		panel.add(lblGaParameters);
 		
 		textField_population = new JTextField();
+		textField_population.setText("100");
 		textField_population.setBounds(325, 429, 134, 28);
 		panel.add(textField_population);
 		textField_population.setColumns(10);
@@ -176,9 +182,55 @@ public class MealGui extends JFrame {
 		lblPopulation.setBounds(241, 435, 88, 16);
 		panel.add(lblPopulation);
 		
-		JLabel lblCriteria = new JLabel("Criteria: $");
-		lblCriteria.setBounds(231, 475, 75, 16);
+		JLabel lblCriteria = new JLabel("max: $");
+		lblCriteria.setBounds(241, 513, 75, 16);
 		panel.add(lblCriteria);
+		
+		JLabel lblMutationRate = new JLabel("Mutation probability:");
+		lblMutationRate.setBounds(505, 435, 160, 20);
+		panel.add(lblMutationRate);
+		
+		JLabel lblCrossoverProbability = new JLabel("Crossover probability:");
+		lblCrossoverProbability.setBounds(494, 475, 160, 16);
+		panel.add(lblCrossoverProbability);
+		
+		textFieldmutate = new JTextField();
+		textFieldmutate.setText("0.005");
+		textFieldmutate.setBounds(656, 429, 134, 28);
+		panel.add(textFieldmutate);
+		textFieldmutate.setColumns(10);
+		
+		textFieldCrossover = new JTextField();
+		textFieldCrossover.setText("0.7");
+		textFieldCrossover.setBounds(656, 475, 134, 28);
+		panel.add(textFieldCrossover);
+		textFieldCrossover.setColumns(10);
+		
+		JButton btnDefault = new JButton("Default");
+		btnDefault.setBounds(483, 524, 117, 29);
+		panel.add(btnDefault);
+		
+		JLabel lblMaxGenerations = new JLabel("Max Generations:");
+		lblMaxGenerations.setBounds(199, 475, 117, 16);
+		panel.add(lblMaxGenerations);
+		
+		textFieldMaxGen = new JTextField();
+		textFieldMaxGen.setText("1000");
+		textFieldMaxGen.setBounds(325, 471, 134, 28);
+		panel.add(textFieldMaxGen);
+		textFieldMaxGen.setColumns(10);
+		
+		textFieldMaxCost = new JTextField();
+		textFieldMaxCost.setText("100");
+		textFieldMaxCost.setBounds(325, 512, 134, 28);
+		panel.add(textFieldMaxCost);
+		textFieldMaxCost.setColumns(10);
+		
+		
+		
+		
+		
+		setVisible(true);
 		progressBar.setVisible(true);
 		
 		
@@ -273,8 +325,27 @@ public class MealGui extends JFrame {
 	
 	
 	private void startGA(){
-		genetic.startGA(Integer.parseInt(textField_population.getText().trim())); //start GA pass the parameters(pop size and criterion)
-		//genetic.generateInitialPopulation(100);
+		
+		progressBar.setVisible(true);
+		
+		//genetic.startGA(populationSize, crossoverProb, mutationProb, maxGen,maxCost); //start GA pass the parameters(pop size and criterion)
+		//progressBar.setVisible(false);
+		
+		Thread t = new Thread() {
+		    public void run() {
+		    	int populationSize=Integer.parseInt(textField_population.getText().trim());
+				double crossoverProb=Double.parseDouble(textFieldCrossover.getText().trim());
+				double mutationProb=Double.parseDouble(textFieldmutate.getText().trim());
+				double maxCost=Double.parseDouble(textFieldMaxCost.getText().trim());
+				int maxGen=Integer.parseInt(textFieldMaxGen.getText().trim());
+				
+		    	
+		    	
+		    	genetic.startGA(populationSize, crossoverProb, mutationProb, maxGen,maxCost); //start GA pass the parameters(pop size and criterion)
+				progressBar.setVisible(false);
+		    }
+		};
+		t.start();
 	}
 	
 

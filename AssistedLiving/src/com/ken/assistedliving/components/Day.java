@@ -34,6 +34,18 @@ public class Day {
 	public ArrayList<Course> getBreakfastList() {
 		return breakfast;
 	}
+	public Course getBreakfastItem(int index){
+		
+		return breakfast.get(index);
+	}
+	public Course getLunchItem(int index){
+		
+		return lunch.get(index);
+	}
+	public Course getDinnerItem(int index){
+		
+		return dinner.get(index);
+	}
 
 	public void setBreakfast(ArrayList<Course> breakfast) {
 		this.breakfast = breakfast;
